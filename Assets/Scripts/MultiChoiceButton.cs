@@ -1,16 +1,27 @@
+using System;
+using TMPro;
+using Unity.Behavior;
 using UnityEngine;
 
 public class MultiChoiceButton : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private BehaviorGraphAgent blackboard;
+
+    private MultichoiceButtonsController mcc;
+
+    [SerializeField]
+    private int index;
+
+    private void Start()
     {
-        
+        mcc = transform.parent.GetComponent<MultichoiceButtonsController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ButtonPressed()
     {
-        
+        if (index == 0) throw new Exception("Set index to something other than 0 in choice button");
+        blackboard.SetVariableValue("MultiChoiceValue", index);
+        mcc.HideAllButtons();
     }
 }

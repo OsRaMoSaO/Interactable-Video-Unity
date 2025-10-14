@@ -27,19 +27,53 @@ public class MultichoiceButtonsController : MonoBehaviour
         textD = buttonD.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
+    public void HideAllButtons()
+    {
+        HideButton(buttonA);
+        HideButton(buttonB);
+        HideButton(buttonC);
+        HideButton(buttonD);
+        
+        textA.text = "";
+        textB.text = "";
+        textC.text = "";
+        textD.text = "";
+    }
+
     public void SetTexts(string a, string b, string c, string d)
     {
+        int visibleCount = -1;
         if (a == string.Empty) HideButton(buttonA);
-        else ShowButton(buttonA);
+        else
+        {
+            visibleCount++;
+            ShowButton(buttonA);
+        }
         
         if (b == string.Empty) HideButton(buttonB);
-        else ShowButton(buttonB);
+        else
+        {
+            visibleCount++;
+            ShowButton(buttonB);
+        }
         
         if (c == string.Empty) HideButton(buttonC);
-        else ShowButton(buttonC);
+        else
+        {
+            visibleCount++;
+            ShowButton(buttonC);
+        }
         
         if (d == string.Empty) HideButton(buttonD);
-        else ShowButton(buttonD);
+        else
+        {
+            visibleCount++;
+            ShowButton(buttonD);
+        }
+        
+        //Center box
+        var rect = gameObject.GetComponent<RectTransform>();
+        transform.localPosition = new Vector3(transform.localPosition.x, visibleCount * 66.6666666667f, transform.localPosition.z);
         
         textA.text = a;
         textB.text = b;
@@ -47,19 +81,16 @@ public class MultichoiceButtonsController : MonoBehaviour
         textD.text = d;
     }
 
-    void ShowTexts(TextMeshProUGUI textObj)
-    {
-        
-    }
-
     void ShowButton(Button button)
     {
         button.GetComponent<Image>().enabled = true;
+        button.interactable = true;
     }
 
     void HideButton(Button button)
     {
         button.GetComponent<Image>().enabled = false;
+        button.interactable = false;
     }
     // Update is called once per frame
     void Update()
