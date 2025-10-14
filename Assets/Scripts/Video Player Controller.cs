@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.IO;
+using System.Resources;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +22,8 @@ public class VideoPlayerController : MonoBehaviour
 
     private bool frameReady = false;
     
+    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +32,12 @@ public class VideoPlayerController : MonoBehaviour
         
         videoPlayer.sendFrameReadyEvents = true;
         videoPlayer.frameReady += FrameReady;
+        
+        var paths = Directory.GetFiles(Application.streamingAssetsPath);
+        foreach (var path in paths)
+        {
+            Resources.Load(path);
+        }
     }
 
     void FrameReady(VideoPlayer source, long frameIdx)
