@@ -1,6 +1,6 @@
-<H1>Make a interactive video in unity for exporting in webGL</H1>
+<H1>Make a interactive video in unity using behaviour graphs!</H1>
 To run this project just clone it and open in unity (version 6).
-For building you can use the already created webgl build profile inside of unity. 
+For building you can use the already created webgl build profile inside of unity which is tested to work on webGL, regular winapp should work fine too. 
 
 ---
 
