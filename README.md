@@ -1,6 +1,6 @@
 <H1>Make a interactive video in unity for exporting in webGL</H1>
-To run this project just clone it and open in unity.
-For building you can use the already created webgl build profile 
+To run this project just clone it and open in unity (version 6).
+For building you can use the already created webgl build profile inside of unity. 
 
 ---
 
