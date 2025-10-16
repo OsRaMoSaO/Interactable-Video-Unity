@@ -12,7 +12,7 @@ using UnityEngine.Video;
 [RequireComponent(typeof(RawImage))]
 public class VideoPlayerController : MonoBehaviour
 {
-    private VideoPlayer videoPlayer;
+    public VideoPlayer videoPlayer;
     private RawImage rawImage;
 
     [SerializeField]
@@ -106,14 +106,13 @@ public class VideoPlayerController : MonoBehaviour
         videoPlayer.Play();
         yield return new WaitUntil(() => frameReady);
         yield return new WaitUntil(() => videoPlayer.isPlaying);
-        
-        SetVideoVisibility(true);
     }
     IEnumerator WaitForVideoEnd(double startTime,double endTime)
     {
         StartCoroutine(PlayVideo());
         while (videoPlayer.time < endTime)
         {
+            if (videoPlayer.time == startTime || videoPlayer.time >= startTime -0.2f && videoPlayer.time <= startTime + 0.2f) SetVideoVisibility(true);
             if (displayTimestamp) Debug.Log($"Video er på tid {videoPlayer.time}s");
             yield return new WaitForEndOfFrame();
         }

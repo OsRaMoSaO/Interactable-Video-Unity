@@ -485,7 +485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9979f17e618056c42997e5110967623e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setBlackScreenOnLoading: 0
+  showLoadingText: 1
+  setBlackScreenOnLoading: 1
 --- !u!1 &257903655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef51f0c50d032a4497ef0adb40db45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 0}
   displayTimestamp: 0
   videoPlayerAgent: {fileID: 350121780}
   loadingText: {fileID: 213544774}

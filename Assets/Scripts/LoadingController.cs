@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class LoadingController : MonoBehaviour
 {
+    public bool showLoadingText = true;
     public bool setBlackScreenOnLoading = false;
     
     private TextMeshProUGUI txt;
@@ -20,6 +21,8 @@ public class LoadingController : MonoBehaviour
 
     public void StartLoadingText()
     {
+        if (!showLoadingText) return;
+
         isLoading = true;
         txt.enabled = true;
         if (setBlackScreenOnLoading) transform.parent.GetComponent<Image>().enabled = true;
@@ -29,6 +32,8 @@ public class LoadingController : MonoBehaviour
 
     public void EndLoadingText()
     {
+        if (!showLoadingText) return;
+        
         isLoading = false;
         txt.enabled = false;
         transform.parent.GetComponent<Image>().enabled = false;
@@ -40,7 +45,7 @@ public class LoadingController : MonoBehaviour
         string dots = string.Empty;
         while (isLoading)
         {
-            yield return new WaitForSeconds(Random.Range(0.5f, 1f));
+            yield return new WaitForSeconds(Random.Range(0.3f, 75f));
             looper++;
             if (looper >= 4)
             {
