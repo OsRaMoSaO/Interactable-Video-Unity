@@ -31,6 +31,7 @@ public class ContinueButtonController : MonoBehaviour
 
     public void HideButton()
     {
+        GetComponent<Button>().interactable = false;
         buttonText.gameObject.SetActive(false);
         btn_Image.enabled = false;
     }
@@ -38,6 +39,7 @@ public class ContinueButtonController : MonoBehaviour
     public void ShowButton()
     {
         buttonText.gameObject.SetActive(true);
+        GetComponent<Button>().interactable = true;
         btn_Image.enabled = true;
     }
 }

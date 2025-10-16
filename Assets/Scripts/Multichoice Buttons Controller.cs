@@ -1,10 +1,14 @@
 using System;
 using TMPro;
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MultichoiceButtonsController : MonoBehaviour
 {
+    [SerializeField] 
+    private BehaviorGraphAgent mainAgent;
+    
     private Button buttonA;
     private Button buttonB;
     private Button buttonC;
@@ -29,6 +33,8 @@ public class MultichoiceButtonsController : MonoBehaviour
 
     public void HideAllButtons()
     {
+        
+        transform.SetAsFirstSibling();
         HideButton(buttonA);
         HideButton(buttonB);
         HideButton(buttonC);
@@ -42,6 +48,9 @@ public class MultichoiceButtonsController : MonoBehaviour
 
     public void SetTexts(string a, string b, string c, string d)
     {
+        transform.SetAsLastSibling();
+        mainAgent.SetVariableValue("MultiChoiceValue", 0);
+        
         int visibleCount = -1;
         if (a == string.Empty) HideButton(buttonA);
         else
