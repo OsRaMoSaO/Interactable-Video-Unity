@@ -72,7 +72,9 @@ public class VideoPlayerController : MonoBehaviour
     }
     private IEnumerator ExecuteVideo(double startTime, double endTime, string videoClip)
     {
-        videoPlayer.url = Path.Combine(Application.streamingAssetsPath, videoClip);
+        if (videoClip.Contains("https://")) videoPlayer.url = videoClip;
+        else videoPlayer.url = Path.Combine(Application.streamingAssetsPath, videoClip);
+        
         loadingText.StartLoadingText();
         
         if (startTime < 0)

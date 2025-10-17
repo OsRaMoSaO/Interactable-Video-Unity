@@ -43,9 +43,10 @@ public class LoadingController : MonoBehaviour
     {
         int looper = 0;
         string dots = string.Empty;
+        
         while (isLoading)
         {
-            yield return new WaitForSeconds(Random.Range(0.3f, 75f));
+            yield return new WaitForSeconds(0.5f);
             looper++;
             if (looper >= 4)
             {
